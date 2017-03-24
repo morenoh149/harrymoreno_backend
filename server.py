@@ -1,6 +1,6 @@
 #!/usr/bin/python
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from os import curdir, sep
+from os import curdir, read, sep
 import cgi
 
 PORT_NUMBER = 8080
@@ -32,7 +32,7 @@ class myHandler(BaseHTTPRequestHandler):
 
             if sendReply == True:
                 #Open the static file requested and send it
-                f = open(curdir + sep + self.path)
+                f = open(curdir + sep + self.path, 'rb')
                 self.send_response(200)
                 self.send_header('Content-type', mimetype)
                 self.end_headers()
@@ -56,7 +56,7 @@ class myHandler(BaseHTTPRequestHandler):
             print("Your name is: %s" % form["your_name"].value)
             self.send_response(200)
             self.end_headers()
-            self.wfile.write("Thanks %s !" % form["your_name"].value)
+            self.wfile.write(str.encode("Thanks %s !\n" % form["your_name"].value))
             return
 
 try:
