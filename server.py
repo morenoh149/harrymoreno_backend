@@ -44,7 +44,7 @@ class myHandler(BaseHTTPRequestHandler):
             self.send_error(404, 'File Not Found: %s' % self.path)
 
     def do_POST(self):
-        if self.path=="/send":
+        if self.path=="/newsletter_signup":
             form = cgi.FieldStorage(
                 fp=self.rfile,
                 headers=self.headers,
@@ -53,10 +53,9 @@ class myHandler(BaseHTTPRequestHandler):
                     'CONTENT_TYPE': self.headers['Content-Type'],
                 }
             )
-            print("Your name is: %s" % form["your_name"].value)
             self.send_response(200)
             self.end_headers()
-            self.wfile.write(str.encode("Thanks %s !\n" % form["your_name"].value))
+            self.wfile.write(str.encode("Thanks for signing up %s !\n" % form["email"].value))
             return
 
 try:

@@ -1,3 +1,3 @@
 # Interactions
 
-`$ curl --data-urlencode "your_name=I am Harry" localhost:8080/send`
+`$ curl --data-urlencode "email=a@b.com" localhost:8080/newsletter_signup`

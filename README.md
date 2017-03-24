@@ -1,4 +1,6 @@
 # harrymoreno_backend
 
 ## Usage
-`$ python3 server.py`
+- install requirements `$ pip3 install -r requirements.txt`
+- activate the virtualenv `$ source harrymoreno_backend`
+- run server `$ python3 server.py`
