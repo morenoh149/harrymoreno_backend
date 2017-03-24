@@ -1,9 +1,12 @@
 #!/usr/bin/python
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from os import curdir, read, sep
+from postgres import Postgres
 import cgi
 
 PORT_NUMBER = 8080
+db = Postgres("postgres://jrandom@localhost/blog")
+db.run("CREATE TABLE foo (bar text, baz int)")
 
 #This class will handle any incoming request from the browser
 class myHandler(BaseHTTPRequestHandler):
@@ -55,7 +58,9 @@ class myHandler(BaseHTTPRequestHandler):
             )
             self.send_response(200)
             self.end_headers()
-            self.wfile.write(str.encode("Thanks for signing up %s !\n" % form["email"].value))
+            submitted_email = form["email"].value
+            db.run("insert into emails values ('%(email)'", {"email": submitted_email})
+            self.wfile.write(str.encode("Thanks for signing up %s !\n" % submitted_email))
             return
 
 try:
