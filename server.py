@@ -5,7 +5,7 @@ from postgres import Postgres
 import cgi
 
 PORT_NUMBER = 8080
-db = Postgres("postgres://jrandom@localhost/blog")
+db = Postgres("postgres://harrymoreno_backend@localhost/blog")
 db.run("CREATE TABLE foo (bar text, baz int)")
 
 #This class will handle any incoming request from the browser

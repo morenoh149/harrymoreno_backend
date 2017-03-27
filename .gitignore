@@ -1,2 +1,4 @@
 harrymoreno_backend
 harrymoreno_backend/.*
+deploy/private_key
+deploy/hosts
