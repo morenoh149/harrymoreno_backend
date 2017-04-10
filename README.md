@@ -1,6 +1,8 @@
 # harrymoreno_backend
 
 ## Usage
+- create virtualenv dir (TODO)
+  - `virtualenv -p /usr/local/bin/python3.6 harrymoreno_backend`
 - install requirements `$ pip3 install -r requirements.txt`
 - activate the virtualenv `$ source harrymoreno_backend`
 - run server `$ python3 server.py`

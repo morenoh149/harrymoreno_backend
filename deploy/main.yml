@@ -1,18 +1,8 @@
 ---
-  - hosts: web
-    sudo: yes
-    user: root
+  - hosts: localhost
     tasks:
-     - name: Add Nginx Repository
-       apt_repository: repo='ppa:nginx/stable' state=present
-       register: ppainstalled
+      - name: Create Blog Database
+        postgresql_db: name=blog
 
-     - name: Install Nginx
-       apt: pkg=nginx state=latest update_cache=true
-       when: ppainstalled|success
-       notify:
-        - Start Nginx
-
-    handlers:
-     - name: Start Nginx
-       service: name=nginx state=started
+      - name: Add Postgres User
+        postgresql_user: db=acme name=harrymoreno_backend password=dolores priv=INSERT,SELECT/blog
