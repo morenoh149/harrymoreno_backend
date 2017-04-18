@@ -1,8 +1,12 @@
 ---
-  - hosts: localhost
+  - hosts: all
     tasks:
       - name: Create Blog Database
         postgresql_db: name=blog
+        with_items:
+          - postgresql
+          - postgresql-contrib
+          - python3-psycopg2
 
       - name: Add Postgres User
         postgresql_user: db=acme name=harrymoreno_backend password=dolores priv=INSERT,SELECT/blog
