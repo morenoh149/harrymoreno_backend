@@ -1,8 +1,8 @@
 # harrymoreno_backend
 
 ## Usage
-- create environment `virtualenv -p /usr/local/bin/python3.6 harrymoreno_backend`
-- activate the environment `$ source harrymoreno_backend/bin/activate `
+- create environment `virtualenv -p /usr/local/bin/python3.6 env`
+- activate the environment `$ source env/bin/activate `
 - install requirements `$ pip3 install -r requirements.txt`
 - run server `$ python3 server.py`
 

@@ -1,5 +1,5 @@
 ---
-  - hosts: all
+  - hosts: web
     tasks:
       - name: Create Blog Database
         postgresql_db: name=blog
