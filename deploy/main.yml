@@ -1,6 +1,11 @@
 ---
-  - hosts: web
+  - hosts: all
+    gather_facts: False
+    become: true
     tasks:
+      - name: ensure python 2.7 is installed
+        raw: apt-get install -y python2.7 python-simplejson
+
       - name: Create Blog Database
         postgresql_db: name=blog
         with_items:
